@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: instagram-clone-api
+    runtime: go
+    buildCommand: go build -o main .
+    startCommand: ./main
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: MONGODB_URI
+        sync: false
+      - key: DB_NAME
+        value: instagram_clone
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        sync: false
