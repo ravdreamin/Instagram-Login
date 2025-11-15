@@ -105,7 +105,7 @@ export default function Home() {
 
         {/* Sign Up */}
         <div className="text-center text-sm mb-10">
-          <span className="text-white">Don't have an account? </span>
+          <span className="text-white">Don&apos;t have an account? </span>
           <a href="#" className="text-[#0095f6] font-semibold">
             Sign up
           </a>
