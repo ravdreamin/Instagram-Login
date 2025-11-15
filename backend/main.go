@@ -25,11 +25,18 @@ func main() {
 
 	// CORS configuration
 	corsConfig := cors.DefaultConfig()
-	corsConfig.AllowOrigins = []string{
+	allowedOrigins := []string{
 		"http://localhost:3000",
 		"https://*.vercel.app",
-		os.Getenv("FRONTEND_URL"),
 	}
+
+	// Add FRONTEND_URL if it's set
+	frontendURL := os.Getenv("FRONTEND_URL")
+	if frontendURL != "" {
+		allowedOrigins = append(allowedOrigins, frontendURL)
+	}
+
+	corsConfig.AllowOrigins = allowedOrigins
 	corsConfig.AllowCredentials = true
 	corsConfig.AllowHeaders = []string{"Origin", "Content-Type", "Accept", "Authorization"}
 	router.Use(cors.New(corsConfig))
