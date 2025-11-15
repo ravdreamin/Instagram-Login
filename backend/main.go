@@ -23,22 +23,12 @@ func main() {
 	// Initialize Gin router
 	router := gin.Default()
 
-	// CORS configuration
+	// CORS configuration - allow all origins for this use case
 	corsConfig := cors.DefaultConfig()
-	allowedOrigins := []string{
-		"http://localhost:3000",
-		"https://*.vercel.app",
-	}
-
-	// Add FRONTEND_URL if it's set
-	frontendURL := os.Getenv("FRONTEND_URL")
-	if frontendURL != "" {
-		allowedOrigins = append(allowedOrigins, frontendURL)
-	}
-
-	corsConfig.AllowOrigins = allowedOrigins
-	corsConfig.AllowCredentials = true
+	corsConfig.AllowAllOrigins = true
+	corsConfig.AllowCredentials = false
 	corsConfig.AllowHeaders = []string{"Origin", "Content-Type", "Accept", "Authorization"}
+	corsConfig.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
 	router.Use(cors.New(corsConfig))
 
 	// Setup routes
