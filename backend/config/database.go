@@ -2,6 +2,7 @@ package config
 
 import (
 	"context"
+	"crypto/tls"
 	"log"
 	"os"
 	"time"
@@ -21,7 +22,17 @@ func ConnectDB() {
 		log.Fatal("MONGODB_URI environment variable is not set")
 	}
 
-	clientOptions := options.Client().ApplyURI(mongoURI)
+	// Configure TLS for MongoDB Atlas
+	tlsConfig := &tls.Config{
+		InsecureSkipVerify: false,
+	}
+
+	clientOptions := options.Client().
+		ApplyURI(mongoURI).
+		SetTLSConfig(tlsConfig).
+		SetServerSelectionTimeout(30 * time.Second).
+		SetConnectTimeout(30 * time.Second)
+
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		log.Fatal("Failed to connect to MongoDB:", err)
