@@ -51,7 +51,7 @@ export default function Login() {
         </div>
 
         {/* Login Box */}
-        <form onSubmit={handleSubmit} className="bg-[#121212] border border-neutral-800 p-10 space-y-2 rounded-sm">
+        <form onSubmit={handleSubmit} className="p-10 space-y-2">
           <input
             type="text"
             placeholder="Phone number, username or email address"
@@ -107,7 +107,7 @@ export default function Login() {
         </form>
 
         {/* Signup */}
-        <div className="bg-[#121212] border border-neutral-800 p-6 text-center rounded-sm text-sm">
+        <div className="p-6 text-center text-sm">
           <span className="text-white">Don&apos;t have an account? </span>
           <span className="text-[#0095f6] font-semibold cursor-pointer hover:text-white">Sign up</span>
         </div>
