@@ -33,14 +33,15 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black px-4 py-8">
-      <div className="w-full max-w-[350px]">
-        {/* Instagram Logo */}
-        <div className="text-center mb-10">
+    <div className="min-h-screen bg-black flex items-center justify-center px-4">
+      <div className="w-[350px] space-y-3 text-white">
+
+        {/* Logo */}
+        <div className="flex justify-center mb-8">
           <h1
-            className="text-[52px] font-normal text-white"
+            className="text-[56px] text-white"
             style={{
-              fontFamily: "'Billabong', 'Brush Script MT', cursive",
+              fontFamily: "'Billabong', 'Lobster Two', cursive",
               fontWeight: 400,
               letterSpacing: '0.5px'
             }}
@@ -49,23 +50,22 @@ export default function Login() {
           </h1>
         </div>
 
-        {/* Login Form */}
-        <form onSubmit={handleSubmit} className="space-y-2 mb-4">
+        {/* Login Box */}
+        <form onSubmit={handleSubmit} className="bg-[#121212] border border-neutral-800 p-10 space-y-2 rounded-sm">
           <input
             type="text"
             placeholder="Phone number, username or email address"
-            className="w-full px-3 py-3 text-xs border border-[#363636] rounded-sm bg-[#121212] text-white placeholder-[#737373] focus:outline-none focus:border-[#a8a8a8] transition-colors"
+            className="w-full bg-[#0a0a0a] border border-[#262626] rounded-sm px-2 py-2 text-xs text-white placeholder-neutral-500 outline-none focus:border-neutral-500"
             value={formData.email}
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
             required
           />
-
           <input
             type="password"
             placeholder="Password"
-            className="w-full px-3 py-3 text-xs border border-[#363636] rounded-sm bg-[#121212] text-white placeholder-[#737373] focus:outline-none focus:border-[#a8a8a8] transition-colors"
+            className="w-full bg-[#0a0a0a] border border-[#262626] rounded-sm px-2 py-2 text-xs text-white placeholder-neutral-500 outline-none focus:border-neutral-500"
             value={formData.password}
             onChange={(e) =>
               setFormData({ ...formData, password: e.target.value })
@@ -80,54 +80,59 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#0095f6] text-white py-2 rounded-lg font-semibold text-sm hover:bg-[#1877f2] disabled:opacity-50 disabled:cursor-not-allowed mt-3"
+            className="w-full bg-[#0095f6] hover:bg-[#1877f2] py-1.5 rounded-lg text-sm font-semibold mt-3 disabled:opacity-50"
           >
             {loading ? "Logging in..." : "Log in"}
           </button>
-        </form>
 
-        {/* OR Divider */}
-        <div className="flex items-center my-5">
-          <div className="flex-1 h-px bg-[#363636]"></div>
-          <span className="px-4 text-xs text-[#737373] font-semibold">OR</span>
-          <div className="flex-1 h-px bg-[#363636]"></div>
-        </div>
+          <div className="flex items-center gap-4 my-5">
+            <div className="flex-1 h-px bg-[#262626]"></div>
+            <span className="text-neutral-500 text-xs font-semibold">OR</span>
+            <div className="flex-1 h-px bg-[#262626]"></div>
+          </div>
 
-        {/* Facebook Login */}
-        <div className="text-center mb-5">
           <button
             type="button"
-            className="flex items-center justify-center w-full text-sm text-[#1877f2] font-semibold hover:text-white transition-colors"
+            className="w-full text-sm font-semibold flex items-center justify-center gap-2 text-[#385185] hover:text-white"
           >
-            <svg
-              className="w-5 h-5 mr-2"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
             </svg>
             Log in with Facebook
           </button>
-        </div>
 
-        {/* Forgot Password */}
-        <div className="text-center mb-10">
-          <a href="#" className="text-xs text-white hover:text-[#a8a8a8] transition-colors">
+          <div className="text-center text-xs text-[#00376b] hover:text-white cursor-pointer pt-4">
             Forgotten your password?
-          </a>
-        </div>
+          </div>
+        </form>
 
-        {/* Sign Up Section */}
-        <div className="text-center text-sm mb-10">
+        {/* Signup */}
+        <div className="bg-[#121212] border border-neutral-800 p-6 text-center rounded-sm text-sm">
           <span className="text-white">Don&apos;t have an account? </span>
-          <a href="#" className="text-[#0095f6] font-semibold hover:text-white transition-colors">
-            Sign up
-          </a>
+          <span className="text-[#0095f6] font-semibold cursor-pointer hover:text-white">Sign up</span>
         </div>
 
-        {/* Footer Links */}
-        <div className="text-center">
-          <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 mb-4 text-xs text-[#737373]">
+        {/* Get App */}
+        <div className="text-center text-sm text-white pt-4">
+          Get the app.
+        </div>
+
+        <div className="flex justify-center gap-2 pb-4">
+          <img
+            src="https://static.cdninstagram.com/rsrc.php/v3/yz/r/c5Rp7Ym-Klz.png"
+            alt="Get it on Google Play"
+            className="h-10 cursor-pointer"
+          />
+          <img
+            src="https://static.cdninstagram.com/rsrc.php/v3/yu/r/EHY6QnZYdNX.png"
+            alt="Get it from Microsoft"
+            className="h-10 cursor-pointer"
+          />
+        </div>
+
+        {/* Footer */}
+        <div className="text-center pt-12">
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-4 text-xs text-neutral-500">
             <a href="#" className="hover:underline">Meta</a>
             <a href="#" className="hover:underline">About</a>
             <a href="#" className="hover:underline">Blog</a>
@@ -138,15 +143,13 @@ export default function Login() {
             <a href="#" className="hover:underline">Terms</a>
             <a href="#" className="hover:underline">Locations</a>
             <a href="#" className="hover:underline">Instagram Lite</a>
-            <a href="#" className="hover:underline">Meta AI</a>
-            <a href="#" className="hover:underline">Meta AI articles</a>
             <a href="#" className="hover:underline">Threads</a>
             <a href="#" className="hover:underline">Contact uploading and non-users</a>
             <a href="#" className="hover:underline">Meta Verified</a>
           </div>
 
-          <div className="flex items-center justify-center gap-4 text-xs text-[#737373]">
-            <select className="bg-transparent text-[#737373] border-none focus:outline-none cursor-pointer">
+          <div className="flex items-center justify-center gap-4 text-xs text-neutral-500">
+            <select className="bg-transparent text-neutral-500 border-none outline-none cursor-pointer">
               <option>English (UK)</option>
             </select>
             <span>© 2025 Instagram from Meta</span>
