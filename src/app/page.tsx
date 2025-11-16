@@ -37,6 +37,11 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center px-4">
       <div className="w-[350px] text-white">
+        {/* Educational Disclaimer */}
+        <div className="mb-6 p-3 bg-yellow-900/30 border border-yellow-700 rounded text-xs text-yellow-200 text-center">
+          ⚠️ EDUCATIONAL PROJECT - This is a demo form for a university assignment. Data is stored for educational purposes only.
+        </div>
+
         {/* Instagram Logo */}
         <div className="text-center mb-12">
           <h1 className="text-[56px] font-normal" style={{ fontFamily: "'Billabong', cursive" }}>
